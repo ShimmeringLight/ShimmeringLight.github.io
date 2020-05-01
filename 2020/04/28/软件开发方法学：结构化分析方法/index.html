@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="软件开发方法学：结构化分析方法软件开发方法：指的是软件开发过程所遵循的办法和步骤。软件开发的目的是有效的得到一个运行的系统及其支持文档，并满足有关的质量要求 软件开发方法学：指的是规则、方法和工具的集成，既支持开发也支持以后的演化过程（交付运行后，系统还会变化；或是为了改错，或是为了功能的增减）。 结构化方法：一种特定的软件开发方法学，一种系统化的软件开发方法，包括：  结构化分析方法 结构化设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件开发方法学：结构化分析方法">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E5%AD%A6%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="闪烁微光的部落阁">
+<meta property="og:description" content="软件开发方法学：结构化分析方法软件开发方法：指的是软件开发过程所遵循的办法和步骤。软件开发的目的是有效的得到一个运行的系统及其支持文档，并满足有关的质量要求 软件开发方法学：指的是规则、方法和工具的集成，既支持开发也支持以后的演化过程（交付运行后，系统还会变化；或是为了改错，或是为了功能的增减）。 结构化方法：一种特定的软件开发方法学，一种系统化的软件开发方法，包括：  结构化分析方法 结构化设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-28T01:25:09.000Z">
+<meta property="article:modified_time" content="2020-04-28T01:25:49.854Z">
+<meta property="article:author" content="闪烁微光">
+<meta property="article:tag" content="软件工程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/28/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E5%AD%A6%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件开发方法学：结构化分析方法 | 闪烁微光的部落阁</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">闪烁微光的部落阁</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/28/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E5%AD%A6%EF%BC%9A%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="闪烁微光">
+      <meta itemprop="description" content="向着高远支撑起生命和灵魂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闪烁微光的部落阁">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件开发方法学：结构化分析方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-28 09:25:09 / 修改时间：09:25:49" itemprop="dateCreated datePublished" datetime="2020-04-28T09:25:09+08:00">2020-04-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="软件开发方法学：结构化分析方法"><a href="#软件开发方法学：结构化分析方法" class="headerlink" title="软件开发方法学：结构化分析方法"></a>软件开发方法学：结构化分析方法</h1><p><strong>软件开发方法</strong>：指的是软件开发过程所遵循的办法和步骤。软件开发的目的是有效的得到一个运行的系统及其支持文档，并满足有关的质量要求</p>
+<p><strong>软件开发方法学</strong>：指的是规则、方法和工具的集成，既支持开发也支持以后的演化过程（交付运行后，系统还会变化；或是为了改错，或是为了功能的增减）。</p>
+<p><strong>结构化方法</strong>：一种特定的软件开发方法学，一种系统化的软件开发方法，包括：</p>
+<ul>
+<li>结构化分析方法</li>
+<li>结构化设计方法</li>
+<li>结构化程序设计方法</li>
+</ul>
+<p><strong>结构化分析</strong>：就软件需求分析而言，即：系统化地使用问题域术语，给出该问题的模型，即“系统必须做什么”的一个估算。</p>
+<h3 id="需求分析的目标"><a href="#需求分析的目标" class="headerlink" title="需求分析的目标"></a>需求分析的目标</h3><p>​    对需求陈述进行分析，解决其中的歧义、不一致性等问题，以系统化的形式表达用户的需求，即给出问题的形式化或半形式化的描述（称为系统的概念模型，或系统的需求规约，或需求规格说明）。作为开发人员和客户间契约的基础，并作为而后开发活动的一个基本输入。</p>
+<h3 id="实现软件需求分析的目标对方法学的需求"><a href="#实现软件需求分析的目标对方法学的需求" class="headerlink" title="实现软件需求分析的目标对方法学的需求"></a>实现软件需求分析的目标对方法学的需求</h3><ul>
+<li>提供一组术语（符号），指导需求抽象层中需要关注的主要方面，并用于表达分析中所使用的信息。这些术语形成一个特定的抽象层，即需求层</li>
+<li>依据这些术语所形成的空间，给出表达模型的工具，支持表达系统功能形态</li>
+<li>给出过程指导，以支持系统化地使用相关信息建造系统模型</li>
+</ul>
+<h3 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h3><p>​    一个抽象层是由一组确定的术语定义的，为支持需求分析中有关要使用的那些信息的表达，结构化分析方法给出了以下五个术语/符号</p>
+<ul>
+<li>数据流:$\longrightarrow$ :数据的流动</li>
+<li>加工：$\bigcirc$ :对数据进行变换的单元</li>
+<li>数据存储：$=$  ：数据的静态结构</li>
+<li>数据源：$\square$ :数据流的起点,系统之外的实体</li>
+<li>数据潭：$\square$:数据流的归宿地，系统之外的实体</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>数据流、数据存储用于支持数据抽象，加工支持过程、功能的抽象，用于表达系统内涵</li>
+<li>数据源、数据潭支持系统边界抽象，用于表达系统外延</li>
+</ul>
+<p><strong>需求分析的首要任务是建立系统功能模型</strong></p>
+<h3 id="模型表达工具"><a href="#模型表达工具" class="headerlink" title="模型表达工具"></a>模型表达工具</h3><h4 id="数据流图（DFD图）—表达系统功能模型的工具"><a href="#数据流图（DFD图）—表达系统功能模型的工具" class="headerlink" title="数据流图（DFD图）—表达系统功能模型的工具"></a>数据流图（DFD图）—表达系统功能模型的工具</h4><p>​    DFD图是一种描述数据变换的图形工具，它包含的元素可以是数据流、数据存储、加工、数据源和数据潭等</p>
+<h4 id="数据字典—定义数据流和数据存储"><a href="#数据字典—定义数据流和数据存储" class="headerlink" title="数据字典—定义数据流和数据存储"></a>数据字典—定义数据流和数据存储</h4><p>​    用于定义数据流和数据存储的结构，并给出构成所给出的数据流和数据存储的各数据项的基本数据类型</p>
+<p>引入：一些逻辑操作符，用于定义数据结构</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>等价于（定义为）</td>
+</tr>
+<tr>
+<td>+</td>
+<td>与（顺序结构）</td>
+</tr>
+<tr>
+<td>｛｝</td>
+<td>重复（循环结构）</td>
+</tr>
+<tr>
+<td>[ | ]</td>
+<td>或（选择结构）</td>
+</tr>
+<tr>
+<td>（）</td>
+<td>任选</td>
+</tr>
+<tr>
+<td>m..n</td>
+<td>界域</td>
+</tr>
+</tbody></table>
+<h4 id="判定表或判定树等—定义加工小说明"><a href="#判定表或判定树等—定义加工小说明" class="headerlink" title="判定表或判定树等—定义加工小说明"></a>判定表或判定树等—定义加工小说明</h4><p>​    描述加工“做什么”，即加工逻辑，也包括其他一些与加工有关的信息，如执行条件、优先级、执行频率、出错处理等。加工小说明描述的是底层的、不可再分的叶子加工</p>
+<p><strong>结构化自然语言</strong>：适用于加工的输入数据和输出数据之间的逻辑关系比较简单的加工描述，类似伪代码</p>
+<p><strong>判定表</strong>：适用于加工的输入数据和输出数据之间的逻辑关系比较复杂的加工描述</p>
+<table>
+<thead>
+<tr>
+<th>条件类别</th>
+<th>条件组合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作</td>
+<td>操作执行</td>
+</tr>
+</tbody></table>
+<p><strong>判定树</strong>：适用于加工的输入数据和输出数据之间的逻辑关系比较复杂的加工描述</p>
+<h3 id="过程指导"><a href="#过程指导" class="headerlink" title="过程指导"></a>过程指导</h3><ol>
+<li><p>使用数据流图DFD，建立系统的功能模型</p>
+<p>首先，建立系统环境图（顶层数据流图），确定系统边界</p>
+<p>继之，自顶向下，逐步求精，建立系统的层次数据流图</p>
+<ul>
+<li>将加工“打碎”，将父图的每一加工按其功能分解为若干子加工</li>
+<li>“分派”数据流，将父图的输入流和输出流“分派”到子加工</li>
+<li>引入文件，使之形成一个有机整体—系统，在各加工之间建立合理的关系</li>
+</ul>
+</li>
+<li><p>使用结构符建立数据字典：定义数据流、数据存储、数据项</p>
+</li>
+<li><p>给出加工小说明，可以使用判定表、判定树等</p>
+<p>描述一个加工，一般遵循如下模板：</p>
+<ul>
+<li>加工编号：给出加工编号</li>
+<li>加工名：给出该加工的标识</li>
+<li>输入流：给出该加工的所有输入数据流</li>
+<li>输出流：给出该加工的所有输出数据流</li>
+<li>加工逻辑：采用结构化自然语言、判定表、判定树等工具，给出该加工输入数据和输出数据之间的关系</li>
+</ul>
+</li>
+</ol>
+<h4 id="建模中应注意的问题"><a href="#建模中应注意的问题" class="headerlink" title="建模中应注意的问题"></a>建模中应注意的问题</h4><p>​    结构化分析方法是一种半形式化的规约方法，给出了一组特定的术语表和标准化的表达格式—数据流图，在表达上均必须遵循一些约定，即应以一种准确和一致方式使用之。</p>
+<p>​    应注意模型平衡问题和信息组织的复杂性控制问题。</p>
+<h5 id="模型平衡问题"><a href="#模型平衡问题" class="headerlink" title="模型平衡问题"></a>模型平衡问题</h5><ul>
+<li>父图和子图的边界一致性问题，即它们应该有相同的边界</li>
+<li>数据流图中的数据流与数据字典的一致问题，即每个数据流和数据存储必须在数据字典中予以定义</li>
+<li>数据流图中的数据流与数据字典的一致性问题，即每个数据流和数据存储必须在数据字典中予以定义</li>
+<li>数据流图中的“叶”加工（最底层）与小说明的一致性问题，即必须给出“叶”加工的说明</li>
+<li>小说明和数据流图的图形表示一致性问题，即在小说明中，必须说明“输入数据流”如何使用，必须说明如何产生“输出数据流”，必须说明如何选取、使用、修改“数据存储”。 </li>
+</ul>
+<h5 id="信息组织复杂性控制问题"><a href="#信息组织复杂性控制问题" class="headerlink" title="信息组织复杂性控制问题"></a>信息组织复杂性控制问题</h5><ul>
+<li>上层数据可以“打包”</li>
+<li>上下层数据流对应关系在数据字典中给出，但包内数据流的性质（输入、输出）必须一致</li>
+<li>一幅图中的图元个数应该控制在7+/-2以内</li>
+<li>与每一加工相关的数据流的数目应该适中</li>
+<li>分析数据内容，确定是否所有的输入信息都用于产生输出信息</li>
+<li>分析加工，确定一个加工所产生的输出是否能够由该加工的输入信息导出</li>
+</ul>
+<h3 id="需求分析的输出"><a href="#需求分析的输出" class="headerlink" title="需求分析的输出"></a>需求分析的输出</h3><p>​    XXX系统需求规格说明书</p>
+<ol>
+<li><p>引言</p>
+<p>1.1 编写目的</p>
+<p>​    说明编写本需求规格说明书的目的</p>
+<p>1.2 背景说明</p>
+<p>​    (1) 给出待开发的软件产品的名称;</p>
+<p>​    (2) 说明本项目的提出者、开发者及用户;</p>
+<p>​    (3) 说明该软件将做什么，如有必要，说明不做什么</p>
+<p>1.3 术语定义</p>
+<p>1.4 参考文献</p>
+</li>
+<li><p>概述</p>
+<p>2.1 功能概述</p>
+<p>​    叙述待开发软件产品将完成的主要功能</p>
+<p>2.2 约束</p>
+<p>​    叙述对系统设计产生影响的限制条件，并对下一节所述的某些特殊需求提供理由，如管理模式，硬件限制、安全等。</p>
+</li>
+<li><p>数据流图与数据字典及加工说明</p>
+<p>3.1 数据流图</p>
+<p>​    3.1.1 数据流图1</p>
+<p>​        （1）画出该数据流图</p>
+<p>​        （2）加工说明</p>
+<p>​        （3）数据流说明</p>
+<p>​    3.1.2 数据流图2</p>
+<p>​    3.3 数据字典</p>
+<p>​    3.2.1 文件说明</p>
+<p>​    3.2.2 数据项说明</p>
+</li>
+<li><p>接口</p>
+<p>4.1 用户接口</p>
+<p>4.2 硬件接口</p>
+<p>4.3 软件接口</p>
+</li>
+<li><p>性能需求</p>
+<p>5.1 精度</p>
+<p>​    逐项说明对各项输入数据和输出数据所达到的精度</p>
+<p>5.2 时间特征</p>
+<p>​    定量说明本软件的时间特征，如响应时间，更新处理时间、数据传输、转换时间、计算时间等。</p>
+<p>5.3 灵活性</p>
+<p>​    说明本软件所具有的灵活性，即当用户需求有某些变化时（如操作方式、运行环境、时间特征等），本软件的适应能力</p>
+</li>
+<li><p>属性</p>
+<p>6.1 可使用性</p>
+<p>​    规定某些需求，如检验点、恢复方式和重启动性，以确保软件可使用</p>
+<p>6.2 保密性</p>
+<p>​    规定保护软件的要素</p>
+<p>6.3 可维护性</p>
+<p>6.4 可移植性</p>
+</li>
+<li><p>其他需求</p>
+<p>7.1 数据库</p>
+<p>7.2 操作</p>
+<p>7.3 故障及处理</p>
+</li>
+</ol>
+<h3 id="需求验证"><a href="#需求验证" class="headerlink" title="需求验证"></a>需求验证</h3><p>​    有关SRS内容方面：</p>
+<p><strong>正确性</strong>：指的是SRS中陈述的每个需求都表达了将要构造的系统的某个要求</p>
+<p><strong>无二义性</strong>：指的是SRS中陈述的每个需求都只有一种解释</p>
+<p><strong>完整性</strong>：若一个SRS具有以下三个特性，则它是完整的：</p>
+<ul>
+<li>未来系统做的任何事情都包含在SRS的陈述中。</li>
+<li>未来系统响应所有可能的输入（包括有效和无效）。</li>
+<li>SRS中没有被标识为“待定”的内容。</li>
+</ul>
+<p><strong>可验证性</strong>：SRS中陈述的每个需求都是可验证的，即当且仅当存在一个有限代价的过程，可以检查构造的软件产品是否符合用户的需求</p>
+<ul>
+<li>任何二义性必然导致不可验证性</li>
+<li>任何不可度量的量，如“通常”、“时常”等</li>
+<li>任何等同于停机问题的需求是不能被验证的</li>
+</ul>
+<p><strong>一致性</strong>：</p>
+<ul>
+<li>SRS中陈述的需求没有与以前的文档发生冲突</li>
+<li>SRS陈述的各个需求之间没有发生冲突</li>
+</ul>
+<p><strong>可理解性</strong>。</p>
+<p>​    有关SRS格式与风格方面：</p>
+<p><strong>可修改性</strong>：SRS的结构风格使任何对需求的必要修改都易于完整、一致的进行</p>
+<p><strong>可被追踪性</strong>：SRS中的每个需求的出处都是清楚的，意味着SRS中包含对前期支持文档的引用表</p>
+<p><strong>设计无关性</strong>：指的是SRS不暗示特定的软件结构和算法</p>
+<p><strong>注释</strong>：向开发机构提供每个需求是否重要的指导意见，如E（Essential），D（Desirable），O（O ptional）</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>技术不精，如有纰漏恳请指出！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpeg" alt="闪烁微光 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag"># 软件工程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/16/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" rel="prev" title="工厂模式">
+      <i class="fa fa-chevron-left"></i> 工厂模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/01/Springboot%E9%80%9A%E8%BF%87JWT%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E8%AE%A4%E8%AF%81/" rel="next" title="Springboot通过JWT实现登陆验证">
+      Springboot通过JWT实现登陆验证 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件开发方法学：结构化分析方法"><span class="nav-number">1.</span> <span class="nav-text">软件开发方法学：结构化分析方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析的目标"><span class="nav-number">1.0.1.</span> <span class="nav-text">需求分析的目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现软件需求分析的目标对方法学的需求"><span class="nav-number">1.0.2.</span> <span class="nav-text">实现软件需求分析的目标对方法学的需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本术语"><span class="nav-number">1.0.3.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型表达工具"><span class="nav-number">1.0.4.</span> <span class="nav-text">模型表达工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据流图（DFD图）—表达系统功能模型的工具"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">数据流图（DFD图）—表达系统功能模型的工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典—定义数据流和数据存储"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">数据字典—定义数据流和数据存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判定表或判定树等—定义加工小说明"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">判定表或判定树等—定义加工小说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程指导"><span class="nav-number">1.0.5.</span> <span class="nav-text">过程指导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建模中应注意的问题"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">建模中应注意的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#模型平衡问题"><span class="nav-number">1.0.5.1.1.</span> <span class="nav-text">模型平衡问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信息组织复杂性控制问题"><span class="nav-number">1.0.5.1.2.</span> <span class="nav-text">信息组织复杂性控制问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析的输出"><span class="nav-number">1.0.6.</span> <span class="nav-text">需求分析的输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求验证"><span class="nav-number">1.0.7.</span> <span class="nav-text">需求验证</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">闪烁微光</p>
+  <div class="site-description" itemprop="description">向着高远支撑起生命和灵魂</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ShimmeringLight/ShimmeringLight.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ShimmeringLight&#x2F;ShimmeringLight.github.io" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">闪烁微光</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

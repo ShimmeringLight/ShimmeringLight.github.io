@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="软件需求与软件需求规约 需求分析（问题定义）：通过分析分配给软件的那些系统需求，确定软件需求及约束 软件体系结构设计（解决方案分析）：为软件需求及约束，确定一组解决方案，进行实例研究，分析可能的方案，并选择一个最佳的方案。 验证、确认及测试（产品评估）：以需求为准则，通过测试、演示、分析及审查等方式，评估最终产品和文档，其中包括一些必要的软件系统集成活动     需求与需求获取定义 一个需求是一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件需求与软件需求规约">
+<meta property="og:url" content="http://yoursite.com/2020/04/14/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E4%B8%8E%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E8%A7%84%E7%BA%A6/index.html">
+<meta property="og:site_name" content="闪烁微光的部落阁">
+<meta property="og:description" content="软件需求与软件需求规约 需求分析（问题定义）：通过分析分配给软件的那些系统需求，确定软件需求及约束 软件体系结构设计（解决方案分析）：为软件需求及约束，确定一组解决方案，进行实例研究，分析可能的方案，并选择一个最佳的方案。 验证、确认及测试（产品评估）：以需求为准则，通过测试、演示、分析及审查等方式，评估最终产品和文档，其中包括一些必要的软件系统集成活动     需求与需求获取定义 一个需求是一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-14T07:20:23.000Z">
+<meta property="article:modified_time" content="2020-04-21T16:00:00.000Z">
+<meta property="article:author" content="闪烁微光">
+<meta property="article:tag" content="软件工程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/14/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E4%B8%8E%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E8%A7%84%E7%BA%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件需求与软件需求规约 | 闪烁微光的部落阁</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">闪烁微光的部落阁</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/14/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E4%B8%8E%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E8%A7%84%E7%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="闪烁微光">
+      <meta itemprop="description" content="向着高远支撑起生命和灵魂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闪烁微光的部落阁">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件需求与软件需求规约
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-14 15:20:23" itemprop="dateCreated datePublished" datetime="2020-04-14T15:20:23+08:00">2020-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-22 00:00:00" itemprop="dateModified" datetime="2020-04-22T00:00:00+08:00">2020-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="软件需求与软件需求规约"><a href="#软件需求与软件需求规约" class="headerlink" title="软件需求与软件需求规约"></a>软件需求与软件需求规约</h1><ul>
+<li>需求分析（问题定义）：通过分析分配给软件的那些系统需求，确定软件需求及约束</li>
+<li>软件体系结构设计（解决方案分析）：为软件需求及约束，确定一组解决方案，进行实例研究，分析可能的方案，并选择一个最佳的方案。</li>
+<li>验证、确认及测试（产品评估）：以需求为准则，通过测试、演示、分析及审查等方式，评估最终产品和文档，其中包括一些必要的软件系统集成活动   </li>
+</ul>
+<h3 id="需求与需求获取"><a href="#需求与需求获取" class="headerlink" title="需求与需求获取"></a>需求与需求获取</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><blockquote>
+<p>一个需求是一个有关“要予构造”的陈述，描述了待开发产品/系统（或项）功能上的能力、性能参数或者其他性质</p>
+</blockquote>
+<ul>
+<li>什么样的陈述可以作为需求——需求的基本性质<ul>
+<li>必要的：是要求的吗？</li>
+<li>无歧义的：只能用一种方式解释吗？</li>
+<li>可测的：可以对它进行测试吗？</li>
+<li>可跟踪的：可以从一个开发阶段到另一个开发阶段对它进行跟踪吗？</li>
+<li>可测量的：可以对它进行测量吗？</li>
+</ul>
+</li>
+</ul>
+<h4 id="需求的分类"><a href="#需求的分类" class="headerlink" title="需求的分类"></a>需求的分类</h4><p>​    功能、性能、外部接口、设计约束、质量属性</p>
+<h5 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h5><blockquote>
+<p>功能需求规约了系统或系统构件必须执行的功能</p>
+</blockquote>
+<p>除了对要执行的功能给出一个陈述外，还应规约如下内容：</p>
+<ul>
+<li>关于该功能输入的所有假定，或为了验证该功能输入，有关检测的假定</li>
+<li>功能内的任一次序，这一次序是与外部有关的</li>
+<li>对异常实现的响应，包括所有内外部所产生的错误</li>
+<li>需求的时序或优先程度</li>
+<li>功能之间的互斥规则</li>
+<li>系统内部状态的假定</li>
+<li>为了该功能的执行，所需要的输入和输出次序</li>
+<li>用于转换或内部计算所需要的公式</li>
+</ul>
+<p>注：</p>
+<ul>
+<li>功能需求是整个需求的主题，即没有功能需求。就没有非功能需求</li>
+<li>非功能需求对功能需求而言，可以是一对多的</li>
+</ul>
+<h5 id="性能需求"><a href="#性能需求" class="headerlink" title="性能需求"></a>性能需求</h5><blockquote>
+<p>性能需求规约了一个系统或系统构件必须具有的性能特性</p>
+</blockquote>
+<h5 id="外部接口需求"><a href="#外部接口需求" class="headerlink" title="外部接口需求"></a>外部接口需求</h5><blockquote>
+<p>外部接口需求规约了系统或系统构件必须与之交互的硬件、软件或数据库元素。它也可能规约其格式、时间或其他因素</p>
+</blockquote>
+<p>外部接口分为以下几类：</p>
+<ul>
+<li>系统接口：描述一个应用如何与系统的其他应用进行交互</li>
+<li>用户接口：规约了软件产品和用户之间接口的逻辑特性，即规约对给用户所显示的数据，对用户所要求的数据以及用户如何控制该用户接口</li>
+<li>硬件接口：如果软件系统必须与硬件设备进行交互，那么就应说明所要求的支持和协议类型</li>
+<li>软件接口：允许与其他软件产品进行交互，如，数据管理系统。操作系统或数学软件包</li>
+<li>通讯接口：规约待开发系统与通讯设施（如局域网）之间的交互。如果通讯需求包含了系统必须使用的网络类型，那么有关类型的信息就应该包含在SRS中</li>
+</ul>
+<h5 id="设计约束"><a href="#设计约束" class="headerlink" title="设计约束"></a>设计约束</h5><blockquote>
+<p>设计约束限制了系统或系统构件的设计方案。</p>
+</blockquote>
+<ul>
+<li>针对产品开发，为确定其相关的设计约束，一般需要考虑以下10个方面<ul>
+<li>法规政策</li>
+<li>硬件限制</li>
+<li>与其他应用的接口</li>
+<li>并发操作</li>
+<li>审计功能：规约软件系统必须班组的数据记录准则或事务记录准则。</li>
+<li>控制功能</li>
+<li>高级语言需求</li>
+<li>握手协议</li>
+<li>应用的关键程度</li>
+<li>安全考虑</li>
+</ul>
+</li>
+</ul>
+<h5 id="质量属性"><a href="#质量属性" class="headerlink" title="质量属性"></a>质量属性</h5><p>​    质量属性规约了软件产品必须具有的一个性质是否达到质量方面一个所期望的水平</p>
+<ul>
+<li>可靠性：软件系统在指定环境中没有失败而正常运行的概率</li>
+<li>存活性：当系统的某一部分系统不能运行时，该软件继续运行或支持关键功能的可能性</li>
+<li>可维护性：发现和改正一个软件故障或对特定范围进行修改所要求的平均工作</li>
+<li>用户友好性：学习和使用一个软件系统的容易程度</li>
+<li>安全性：在一个预定的时间内，使软件系统安全的可能性</li>
+<li>可移植性：软件系统运行的平台类型</li>
+</ul>
+<h3 id="需求发现"><a href="#需求发现" class="headerlink" title="需求发现"></a>需求发现</h3><p>常用的发现初始需求的技术，包括：</p>
+<h4 id="自悟"><a href="#自悟" class="headerlink" title="自悟"></a>自悟</h4><blockquote>
+<p>需求人员把自己作为系统的最终用户，审视该系统并提出问题：“如果我使用这一系统，则我需要……”</p>
+</blockquote>
+<ul>
+<li>适用条件：需求工程师不能直接与用户进行交流</li>
+<li>成功条件：要使自悟是成功的，需求人员必须具有比最终用户还要多的应用领域和过程方面的知识，并具有良好的想象能力 </li>
+</ul>
+<h4 id="交谈"><a href="#交谈" class="headerlink" title="交谈"></a>交谈</h4><blockquote>
+<p>为了确定系统应该提供的功能，需求人员通过提出问题，用户回答，直接询问用户想要的是一个什么样的系统</p>
+</blockquote>
+<ul>
+<li>成功的条件<ul>
+<li>需求人员是否具有正确提出问题的能力</li>
+<li>回答问题是否具有揭示需求本意的能力</li>
+</ul>
+</li>
+<li>存在的风险：在交谈期间需求可能不断增长，或是以前没有认识到的合理需求的一种表现，可能导致超出项目成本和进度的限制</li>
+<li>应对措施：项目管理人员和客户管理人员应该定期对交谈过程的结果进行复审，其中具有挑战的问题是判断：<ul>
+<li>什么时候对这一增长划界</li>
+<li>什么时候将这一增长告知客户</li>
+</ul>
+</li>
+</ul>
+<h4 id="观察"><a href="#观察" class="headerlink" title="观察"></a>观察</h4><blockquote>
+<p>通过观察用户执行其现行的任务和过程，或通过观察他们如何操作与所期望的新系统有关的现有系统，了解系统裕兴的环境，特别是了解要建的新系统与现存系统、过程以及工作方法之间必须进行的交互。</p>
+</blockquote>
+<ul>
+<li>存在的风险<ul>
+<li>客户可能抵触这一观察</li>
+<li>客户还可能认为开发者在签约之前，就已经熟悉了他们的业务</li>
+</ul>
+</li>
+</ul>
+<h4 id="小组会"><a href="#小组会" class="headerlink" title="小组会"></a>小组会</h4><blockquote>
+<p> 举行客户和开发人员的联席会议，与客户组织的一些代表共同开发需求，其中：</p>
+</blockquote>
+<ul>
+<li><p>通常由开发组织的一个代表为首席需求工程师或软件工程项目经理，主持这一会议，但还可以采用其他形式，这依赖于其应用领域和主持人的能力。主持人的作用主要是掌握会议的进程。</p>
+</li>
+<li><p>必须仔细的选择该小组的成员，不仅要考虑他们对现存的和未来运行环境的理解程度，还要考虑他们的人品</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>如果会议组织得当，可以很快地标识出一些需求。</li>
+<li>可使需求开发人员在一次会议中能够对一个给定的需求得到多种观点，从而不但可节省与个人交谈的时间，还可节省联系他们的时间</li>
+<li>有关需求不同观点之间的冲突，可以揭示需求中存在的问题，也有助于客户在其内部达成一致</li>
+</ul>
+</li>
+</ul>
+<h4 id="提炼"><a href="#提炼" class="headerlink" title="提炼"></a>提炼</h4><blockquote>
+<p>复审技术文档（例如，有关需要的陈述，功能和性能目标的陈述，系统规约和接口标准，硬件设计文档以及ConOps文档）并提出相关的信息</p>
+</blockquote>
+<ul>
+<li>适用条件：提炼方法是针对已经有了部分需求文档的情况</li>
+<li>在许多项目中，在任何交谈、观察、小组会或自悟之前，应该对该项目的背景文档进行复审，还应对系统规约进行复审，同时了解相关的标准和政策。</li>
+</ul>
+<h4 id="注"><a href="#注" class="headerlink" title="注"></a>注</h4><blockquote>
+<ul>
+<li>在任意特定的环境中，每项技术都有其自己的有点喝不足，在实施上述任何一项技术时，都可以辅以其他方法，例如原型构造、在句型小组会时可以使用原型，方便人员之间的交流</li>
+<li>根据需求工程人员的技能和产品、合同的实际情况，往往需要组合地使用这些技术来开发初始需求</li>
+<li>执行需求发现这项活动的人，其技能水平将对这项活动的成功有重大的影响</li>
+<li>大型复杂项目和一些有能力的组织，在开发需求文档时，往往使用系统化的需求获取、分析技术和工具。一些方法提供了系统化、自动化的功能，并可逐一验证单一需求所具有的五个性质，验证需求规约是否具有四个性质。</li>
+</ul>
+</blockquote>
+<h3 id="需求规约（SRS）及其格式"><a href="#需求规约（SRS）及其格式" class="headerlink" title="需求规约（SRS）及其格式"></a>需求规约（SRS）及其格式</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><blockquote>
+<p>需求规约时一个软件项/产品/系统所有需求陈述的正式文档，是一个软件产品/系统的概念模型</p>
+</blockquote>
+<h4 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h4><ul>
+<li>重要性和稳定性程度</li>
+<li>可修改的：在不过多的影响其他需求的前提下，可以容易的修改一个单一需求</li>
+<li>完整的：没有被遗漏的需求</li>
+<li>一致的：不存在互斥的需求  </li>
+</ul>
+<p>就功能的需求规约来说，还应考虑以下问题：</p>
+<ul>
+<li>功能源</li>
+<li>功能共享的数据</li>
+<li>功能与外部界面的交互</li>
+<li>功能所使用的计算资源</li>
+</ul>
+<h4 id="需求规约格式"><a href="#需求规约格式" class="headerlink" title="需求规约格式"></a>需求规约格式</h4><blockquote>
+<ol>
+<li><p>引言</p>
+<p> 1.1 目的</p>
+<p> 1.2 范围</p>
+<p> 1.3 定义，缩略语</p>
+<p> 1.4 参考文献</p>
+<p> 1.5 概述（即项目范围）</p>
+</li>
+<li><p>总体描述</p>
+<p> 2.1 产品概述</p>
+<p> 2.2 产品功能</p>
+<p> 2.3 用户特性</p>
+<p> 2.4 约束</p>
+<p> 2.5 假设和依赖</p>
+</li>
+<li><p>特定需求</p>
+</li>
+</ol>
+<p>附录</p>
+<p>索引</p>
+</blockquote>
+<p>​    第三部分“特定需求”，是文档的技术核心，一般来说，应根据不同类型的系统来构造这一部分，其中可能会涉及一些模板：</p>
+<ul>
+<li>模板1:根据系统运行模式，把第三部分划分为一些小姐，并在一个小节中给出系统性能的规约</li>
+<li>模板2:通过一种可选的模式划分，把第三部分划分为一些小节，其中没肿么的性能包含在该模式的规约中。</li>
+<li>模版3:根据用户类，把第三部分划分为一些小节，其中每类用户执行的功能包含在该类用户的描述中。 </li>
+<li>模板4:按对象，把第三部分划分为一些小节，在每一小节中给出该对象所关联的功能</li>
+</ul>
+<h4 id="表达需求规约（规格说明书）的三种风格"><a href="#表达需求规约（规格说明书）的三种风格" class="headerlink" title="表达需求规约（规格说明书）的三种风格"></a>表达需求规约（规格说明书）的三种风格</h4><p>​    在获取SRS（草案）期，一般应使用非形式化语言来表达需求规约</p>
+<blockquote>
+<p> 非形式化的规约：即以一种自然语言来表达需求规约，如同使用一种自然语言写了一篇文章</p>
+<p> 其中：可以不局限于那种语言通常所规定的任何符号或特殊限制（例如文法和词法），但要为那些在一个特定语境中所使用的术语提供词义定义，一般情况下，该语境与通常使用该术语的语境时有区别的。</p>
+</blockquote>
+<p>​    在对需求进行技术分析期间，一般应采用半形式化语言来表达需求规约</p>
+<blockquote>
+<p>半形式化的规约：即以半形式化符号体系（包括术语表、标准化的表达格式等）来表达需求规约。因此，半形式化规约的编制应遵循一个标准的表示模板（一些约定）。</p>
+<p>其中：</p>
+<ul>
+<li>术语表明确地标识了一些词，可以基于某一种自然语言</li>
+<li>标准化的表达格式标识了一些元信息，支持以更清晰的方式系统化来编制文档。</li>
+</ul>
+<p>注：应用中，不论是词还是标准化的表达格式，在表达上均必须遵循一些约定</p>
+</blockquote>
+<p>​    对于质量（特别是安全性）要求比较高的软件产品/系统，一般应采用形式化语言来表达需求规约</p>
+<blockquote>
+<p>形式化规约：即以一种基于良构数学概念的符号体系来编制需求规约，一般往往伴有解释性注释的支持。其中：</p>
+<ul>
+<li>以数学概念用于定义该符号体系的词法和语意</li>
+<li>定义了一组支持逻辑推理的证明规则，并支持这一符号体系的定义和引用</li>
+</ul>
+</blockquote>
+<ul>
+<li>软件系统的技术是复杂的，因此没有必要把系统的规约或实现束缚于某一技术上，即可以同时使用多种技术，分析用户需求，并建立相应的文档</li>
+<li>确定什么样的需求规约表达方式，是组织或项目经理的责任</li>
+</ul>
+<h4 id="需求规约的作用"><a href="#需求规约的作用" class="headerlink" title="需求规约的作用"></a>需求规约的作用</h4><ul>
+<li>作为软件开发组织和用户之间一份事实上的技术合同书，是产品功能及其环境的体现</li>
+<li>对于项目的其余大多数工作，它是一个管理控制点</li>
+<li>是创建产品验收测试计划和用户指南的基础，即基于需求规约一般还会产生另外两个文档——初始测试计划和用户系统操作描述</li>
+</ul>
+<h5 id="测试的分类"><a href="#测试的分类" class="headerlink" title="测试的分类"></a>测试的分类</h5><p>单元测试：详细设计阶段生成</p>
+<p>集成测试：总体设计阶段生成</p>
+<p>有效性测试：需求分析阶段生成</p>
+<h5 id="初始测试计划"><a href="#初始测试计划" class="headerlink" title="初始测试计划"></a>初始测试计划</h5><p>主要内容：对未来系统中的哪些功能和性能指标，以及达到何种要求，进行测试</p>
+<p>作用：指导系统开发早期发现并修改一个错误，减少测试代价</p>
+<h5 id="用户系统操作描述"><a href="#用户系统操作描述" class="headerlink" title="用户系统操作描述"></a>用户系统操作描述</h5><p>主要内容：从用户使用系统的角度，简要描述系统功能和性能，使用系统的主要步骤和方法，以及系统用户的责任等。相当于一份初步的用户手册</p>
+<p>作用：</p>
+<ul>
+<li>在软件开发的早期，准备一份初步的用户手册可以使未来的系统用户能够从使用的角度检查、审核目标系统，从而比较容易判断这个系统是否符合他们的需要</li>
+<li>为了书写这样的文档，也会迫使系统分析员从用户的角度来考虑软件系统，这样不论是审查还是复审时，就更容易发现不一致和误解的地方，这对保证软件质量和项目成功是很重要的</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>技术不精，如有纰漏恳请指出！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpeg" alt="闪烁微光 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag"># 软件工程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/14/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B/" rel="prev" title="软件过程">
+      <i class="fa fa-chevron-left"></i> 软件过程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/16/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" rel="next" title="工厂模式">
+      工厂模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件需求与软件需求规约"><span class="nav-number">1.</span> <span class="nav-text">软件需求与软件需求规约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求与需求获取"><span class="nav-number">1.0.1.</span> <span class="nav-text">需求与需求获取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求的分类"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">需求的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#功能需求"><span class="nav-number">1.0.1.2.1.</span> <span class="nav-text">功能需求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能需求"><span class="nav-number">1.0.1.2.2.</span> <span class="nav-text">性能需求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外部接口需求"><span class="nav-number">1.0.1.2.3.</span> <span class="nav-text">外部接口需求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设计约束"><span class="nav-number">1.0.1.2.4.</span> <span class="nav-text">设计约束</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#质量属性"><span class="nav-number">1.0.1.2.5.</span> <span class="nav-text">质量属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求发现"><span class="nav-number">1.0.2.</span> <span class="nav-text">需求发现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自悟"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">自悟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交谈"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">交谈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观察"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">观察</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小组会"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">小组会</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提炼"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">提炼</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">注</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求规约（SRS）及其格式"><span class="nav-number">1.0.3.</span> <span class="nav-text">需求规约（SRS）及其格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本性质"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">基本性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求规约格式"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">需求规约格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表达需求规约（规格说明书）的三种风格"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">表达需求规约（规格说明书）的三种风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求规约的作用"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">需求规约的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#测试的分类"><span class="nav-number">1.0.3.5.1.</span> <span class="nav-text">测试的分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#初始测试计划"><span class="nav-number">1.0.3.5.2.</span> <span class="nav-text">初始测试计划</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户系统操作描述"><span class="nav-number">1.0.3.5.3.</span> <span class="nav-text">用户系统操作描述</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">闪烁微光</p>
+  <div class="site-description" itemprop="description">向着高远支撑起生命和灵魂</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ShimmeringLight/ShimmeringLight.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ShimmeringLight&#x2F;ShimmeringLight.github.io" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">闪烁微光</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
