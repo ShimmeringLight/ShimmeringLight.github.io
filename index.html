@@ -158,6 +158,272 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="闪烁微光">
+      <meta itemprop="description" content="向着高远支撑起生命和灵魂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闪烁微光的部落阁">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/06/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">结构化设计：总体设计</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-06 15:09:18 / 修改时间：15:10:39" itemprop="dateCreated datePublished" datetime="2020-05-06T15:09:18+08:00">2020-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="结构化设计：总体设计"><a href="#结构化设计：总体设计" class="headerlink" title="结构化设计：总体设计"></a>结构化设计：总体设计</h1><h3 id="何谓设计"><a href="#何谓设计" class="headerlink" title="何谓设计"></a>何谓设计</h3><p>​    一种软件开发活动，定义实现需求规约所需的软件结构</p>
+<p><strong>设计目标</strong>：依据需求规约，在一个抽象层上建立系统软件模型，包括软件体系结构（数据和程序结构），以及详细的处理算法，产生设计规格说明书</p>
+<p>即：要回答如何解决问题-给出软件解决方案</p>
+<p>结构化设计分为：</p>
+<p><strong>总体设计</strong>：确定系统的整体模块结构，即系统实现所需要的软件模块以及这些模块之间的调用关系、</p>
+<p><strong>详细设计</strong>：详细描述模块</p>
+<h3 id="实现目标对结构化设计方法的需求"><a href="#实现目标对结构化设计方法的需求" class="headerlink" title="实现目标对结构化设计方法的需求"></a>实现目标对结构化设计方法的需求</h3><ul>
+<li>提供可体现“原理/原则”的一组术语（符号），形成一个特定的抽象层，用于表达设计中所使用的部件</li>
+<li>依据术语所形成的空间，给出表达软件模型工具</li>
+<li>给出设计的过程指导</li>
+</ul>
+<h3 id="结构化设计方法"><a href="#结构化设计方法" class="headerlink" title="结构化设计方法"></a>结构化设计方法</h3><p>在总体设计层：</p>
+<ul>
+<li>引入了两个术语/符号<ul>
+<li>模块：一种可独立标识的软件成分，用矩形表示</li>
+<li>调用：模块间的一种关系，模块A为了完成其任务必须依赖其他模块，用箭头表示</li>
+</ul>
+</li>
+<li>引入了模块结构图（MSD），用于表达系统软件系统的静态结构 </li>
+</ul>
+<p><strong>过程指导</strong></p>
+<p>​    为了实现设计目标，总体设计的具体任务是：将DFD转化为MSD，分两步实现。</p>
+<ul>
+<li><p>第一步：如何将DFD转化为初始的MSD</p>
+<p>分类：变换型数据流图、事务型数据流图、变换设计、事务设计</p>
+</li>
+<li><p>第二步：如何将原始的MSD转化为最终可供详细设计使用的MSD</p>
+</li>
+</ul>
+<h4 id="总体设计第一步"><a href="#总体设计第一步" class="headerlink" title="总体设计第一步"></a>总体设计第一步</h4><h5 id="数据流图的分类"><a href="#数据流图的分类" class="headerlink" title="数据流图的分类"></a>数据流图的分类</h5><p><strong>变换型数据流图</strong>：具有较明显的输入部分和变换部分之间的界面，变换部分和输出部分之间界面的数据流图</p>
+<p>​    →获取数据→变换数据→输出数据→</p>
+<ul>
+<li>逻辑输入：离物理输入最远，仍被看成系统输入的数据流</li>
+<li>逻辑输出：离物理输出最远，仍被看成系统输出的数据流</li>
+</ul>
+<p><strong>事务型数据流图</strong>：数据到达一个加工，该加工根据输入数据的值，在其后的若干动作序列（成为一个事务）中选出一个来执行，这类数据流图称为事务型数据流图。</p>
+<ul>
+<li>事务型DFD完成下述任务：<ul>
+<li>接受输入数据</li>
+<li>分析并确定对应的事务</li>
+<li>选取与该事务对应的一条活动路径</li>
+</ul>
+</li>
+<li>事务型DFD与变换型DFD的区别<ul>
+<li>原则上所有DFD都可以看成是变换型DFD</li>
+<li>一般而言，事务型数据流图接受1个输入数据，分成多条路径</li>
+</ul>
+</li>
+</ul>
+<h5 id="变换设计的基本步骤"><a href="#变换设计的基本步骤" class="headerlink" title="变换设计的基本步骤"></a>变换设计的基本步骤</h5><ul>
+<li>第一步：设计准备，复审并精化系统模型<ul>
+<li>为了确保系统的输入数据和输出数据符合实际情况而复审其语境</li>
+<li>为了确保是否需要进一步精化系统的DFD图而复审其语境</li>
+</ul>
+</li>
+<li>第二步：确定输入、变换、输出三部分之间的边界<ul>
+<li>根据加工的语意和相关的数据流，确定系统的逻辑输入和逻辑输出</li>
+</ul>
+</li>
+<li>第三步：第一级分解——系统模块结构图顶层和第一层的设计<ul>
+<li>主模块：位于最顶层，一般以所建系统的名字命名，其任务是协调控制第一层模块</li>
+<li>输入模块部分：为主模块提供加工数据，有几个逻辑输入就设计几个输入模块</li>
+<li>变换模块部分，接受输入模块的输入，并对内部形式的数据加工，产生系统所有的内部输出数据</li>
+<li>输出模块部分：将变换模块产生的输出数据，以用户可见的形式输出。有几个逻辑输出，就设计几个输出模块</li>
+</ul>
+</li>
+<li>第四步：第二级分解——自顶向下，逐步求精<ul>
+<li>对每一个输入模块设计其下层模块<ul>
+<li>接收数据模块（即输入模块）</li>
+<li>把接收数据变换成它的上级模块所需的数据（即变换模块）</li>
+<li>直到输入模块为物理输入，则细化停止</li>
+</ul>
+</li>
+<li>对每一个输出模块设计其下层模块<ul>
+<li>将得到的数据向输出形式进行转换</li>
+<li>将转化后的数据进行输出</li>
+<li>直到输出模块是物理输出，则细化停止</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对变化模块进行分解（无通用法则） </li>
+</ul>
+<h5 id="事务设计的基本步骤"><a href="#事务设计的基本步骤" class="headerlink" title="事务设计的基本步骤"></a>事务设计的基本步骤</h5><ul>
+<li>第一步：设计准备，复审并精化系统模型<ul>
+<li>为了确保系统的输入数据和输出数据符合实际情况而复审其语境</li>
+<li>为了确保是否需要进一步精化系统的DFD图而复审其语境</li>
+</ul>
+</li>
+<li>第二步：确定事务处理中心</li>
+<li>第三步：第一级分解——系统模块结构图顶层和第一层的设计<ul>
+<li>首先，为事务中心设计一个主模块</li>
+<li>然后，为每一条活动路径设计一个事务处理模块</li>
+<li>对其输入部分设计一个输入模块</li>
+<li>如果一个事务数据流图的活动路径集中于一个加工，则设计一个输出模块，否则第一层不设计输出模块</li>
+</ul>
+</li>
+<li>第四步：第二级分解——自顶向下，逐步求精<ul>
+<li>对于输入模块、输出模块的细化，如同变化设计的细化过程</li>
+<li>对各条路径模块的细化，无设计法则 </li>
+</ul>
+</li>
+</ul>
+<h3 id="总体设计第二步"><a href="#总体设计第二步" class="headerlink" title="总体设计第二步"></a>总体设计第二步</h3><p>​    将初始的MSD转化为最终可供详细设计使用的MSD</p>
+<p>概念：模块、模块化。</p>
+<p>基于模块化原理：高内聚、低耦合</p>
+<p>给出设计规则—经验规则—启发式规则</p>
+<p>用于精化初始的MSD，体现设计人员的创造</p>
+<p><strong>模块</strong>：执行一个特殊任务的一组例程和数据结构</p>
+<ul>
+<li>接口：给出可由其他模块和例程访问的对象</li>
+<li>实现：接口的实现（模块功能的执行机制）</li>
+</ul>
+<p><strong>模块化</strong>：把系统分解成若干模块的过程</p>
+<h4 id="耦合"><a href="#耦合" class="headerlink" title="耦合"></a>耦合</h4><h5 id="耦合的强度所依赖的因素"><a href="#耦合的强度所依赖的因素" class="headerlink" title="耦合的强度所依赖的因素"></a>耦合的强度所依赖的因素</h5><ul>
+<li>一个模块对另一个模块的引用</li>
+<li>一个模块向另一个模块传递的数据量</li>
+<li>一个模块施加到另一个模块的控制的数量</li>
+<li>模块之间接口的复杂程度 </li>
+</ul>
+<h5 id="耦合的类型（由强到弱）"><a href="#耦合的类型（由强到弱）" class="headerlink" title="耦合的类型（由强到弱）"></a>耦合的类型（由强到弱）</h5><ul>
+<li>内容耦合：一个模块直接修改或操作另一个模块的数据</li>
+<li>公共耦合：两个以上的模块共同引用一个全局数据项</li>
+<li>控制耦合：一个模块向另一个模块传递一个控制信号，接受信号的模块依据该信号进行必要的活动</li>
+<li>标记耦合：两个模块至少有一个通过界面传递的公共参数包含内部结构，如数组，字符串等。</li>
+<li>数据耦合：模块间通过参数传递基本类型的数据。</li>
+</ul>
+<p><strong>如果模块间必须存在耦合，就尽量使用数据耦合，少用控制耦合，限制公共耦合的范围，坚决避免使用内容耦合</strong></p>
+<h4 id="内聚"><a href="#内聚" class="headerlink" title="内聚"></a>内聚</h4><p><strong>定义</strong>：一个模块之内各成分之间相互依赖程度的度量</p>
+<p><strong>好的设计</strong>：</p>
+<ul>
+<li>模块功能单一</li>
+<li>模块的各部分都和模块的功能直接相关</li>
+<li>高内聚</li>
+</ul>
+<h5 id="内聚类型（由低到高）"><a href="#内聚类型（由低到高）" class="headerlink" title="内聚类型（由低到高）"></a>内聚类型（由低到高）</h5><ul>
+<li>偶然内聚：一个模块之内各成分之间没有任何关系</li>
+<li>逻辑内聚：几个逻辑上相关的功能放在同一模块中</li>
+<li>时间内聚：一个模块完成的功能必须在同一时间内完成，而这些功能只是因为时间因素关联在一起</li>
+<li>过程内聚：处理成分必须以特定的次序执行</li>
+<li>通信内聚：各成分偶操作在同一数据集或生成泳衣数据集</li>
+<li>顺序内聚：各成分与一个功能相关，且一个成分的输出作为另一成分的输入</li>
+<li>功能内聚：模块的所有成分对完成单一功能是最基本的，且模块对完成这一功能而言是充分必要的</li>
+</ul>
+<h4 id="启发式规则"><a href="#启发式规则" class="headerlink" title="启发式规则"></a>启发式规则</h4><ul>
+<li>根据设计准则，从长期的软件开发实践中，总结出来的规则，既不是设计目标，也不是设计时应普遍遵循的原理</li>
+</ul>
+<p><strong>常用的六种启发式规则</strong></p>
+<ul>
+<li>改进软件结构，提高模块独立性：<ul>
+<li>通过模块的分解和合并，降低耦合，提高内聚</li>
+</ul>
+</li>
+<li>模块规模适中—每页60行语句：模块最好能写在一张纸内（60行）<ul>
+<li>方法<ul>
+<li>进一步分解过大的模块</li>
+<li>将频繁调用的小模块合并到上级大模块中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>深度、宽度、扇入和扇出适中<ul>
+<li>深度：软件结构中控制的层数，标示一个系统的大小和复杂程度</li>
+<li>宽度：软件结构中同一个层次上的模块总数的最大值，宽度越大的系统越复杂</li>
+<li>扇入：表示有多少个上级模块直接调用它<ul>
+<li>一般而言，扇入越大说明共享该模块的上级模块越多</li>
+<li>不违背模块独立性的条件下，扇入越大越好</li>
+</ul>
+</li>
+<li>扇出：一个模块直接控制（调用）的下级模块数目<ul>
+<li>扇出过大意味着模块功能过分复杂</li>
+<li>扇出过小意味着功能过度集中</li>
+<li>典型的扇出是3或4（上限5-9）</li>
+<li>好的系统：顶层扇出高，中层扇出少，底层扇入高，系统成“葫芦”型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模块的作用于力争在控制域之内<ul>
+<li>作用域：受该模块内一个判定影响的所有模块的集合</li>
+<li>控制域：模块本身和所有直接或间接从属于它的模块的集合</li>
+</ul>
+</li>
+<li>降低模块接口的复杂性</li>
+<li>模块功能应该可以预测</li>
+</ul>
+<h3 id="总体设计总结"><a href="#总体设计总结" class="headerlink" title="总体设计总结"></a>总体设计总结</h3><ul>
+<li>将一个给定的DFD转换为初始的模块结构图<ul>
+<li>基本上是机械的过程</li>
+<li>一般不能体现设计人员的创造力</li>
+</ul>
+</li>
+<li>优化设计<ul>
+<li>将一个初始的模块结构图转换为最终的模块结构图</li>
+<li>对设计人员将是一种挑战</li>
+<li>其结果将直接影响软件系统开发的质量</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/Springboot%E9%80%9A%E8%BF%87JWT%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E8%AE%A4%E8%AF%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1682,7 +1948,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
