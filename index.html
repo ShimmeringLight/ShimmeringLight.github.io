@@ -158,6 +158,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="闪烁微光">
+      <meta itemprop="description" content="向着高远支撑起生命和灵魂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闪烁微光的部落阁">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/07/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">结构化设计：详细设计</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-07 15:23:03 / 修改时间：15:24:31" itemprop="dateCreated datePublished" datetime="2020-05-07T15:23:03+08:00">2020-05-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="结构化设计：详细设计"><a href="#结构化设计：详细设计" class="headerlink" title="结构化设计：详细设计"></a>结构化设计：详细设计</h1><p><strong>详细设计的任务</strong>：定义每一模块。主要引入了关于顺序、选择和循环三种动作控制结构的术语/符号</p>
+<p><strong>结构化程序设计的理念</strong>：设计具有如下结构的程序：一个程序的代码块仅仅通过顺序、选择和循环这三种基本控制结构进行连接，并且每个代码块只有一个入口和一个出口。</p>
+<h2 id="详细设计的表达方式"><a href="#详细设计的表达方式" class="headerlink" title="详细设计的表达方式"></a>详细设计的表达方式</h2><h3 id="第一种表达：伪码（类程序设计语言PDL）"><a href="#第一种表达：伪码（类程序设计语言PDL）" class="headerlink" title="第一种表达：伪码（类程序设计语言PDL）"></a>第一种表达：伪码（类程序设计语言PDL）</h3><p>（Program Design Language）</p>
+<p>​    伪码是一种混合语言，外部采用形式语言定义控制结构和数据结构，内部使用自然语言</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>​    PDL不仅可以作为设计工具，而且可作为注释工具，直接插在源代码中间，以保持文档和程序的一致性，提高文档的质量</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>不如图形工具那样形象直观</li>
+<li>当描述复杂的条件组合与动作之间的对应关系时，不如判定表和判定树那样清晰简单</li>
+</ul>
+<h3 id="第二种表达方式-程序流程图（程序框图）"><a href="#第二种表达方式-程序流程图（程序框图）" class="headerlink" title="第二种表达方式-程序流程图（程序框图）"></a>第二种表达方式-程序流程图（程序框图）</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><p>​    对控制流程的描绘很直观，便于初学者掌握</p>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>不是一种逐步求精的工具，程序员过早地考虑程序的控制流程，而不是全局结构</li>
+<li>所表达的控制流，可以不受约束随意转移</li>
+<li>不易表达数据结构</li>
+</ul>
+<h3 id="第三种表达方式-PAD图"><a href="#第三种表达方式-PAD图" class="headerlink" title="第三种表达方式-PAD图"></a>第三种表达方式-PAD图</h3><p>（Problem Analysis Diagram）</p>
+<p>注：支持逐步求精设计def</p>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>支持自顶向下逐步求精的结构化详细设计，可使用“def”符号逐步增加细节</li>
+<li>PAD图最左边的竖线时程序的主线，随着程序层次的增加，逐步向右延伸，每增加一个层次，图形向右扩展一条竖线，从而使PAD图所表现的处理逻辑易读、易懂和易记</li>
+</ul>
+<h3 id="第四种表达方式-N-S图"><a href="#第四种表达方式-N-S图" class="headerlink" title="第四种表达方式- N-S图"></a>第四种表达方式- N-S图</h3><h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><p>支持自顶向下逐步求精的结构化详细设计，并且严格限制了控制从一个处理到另一个处理的转移</p>
+<h3 id="第五种表达方式：判定表和判定树"><a href="#第五种表达方式：判定表和判定树" class="headerlink" title="第五种表达方式：判定表和判定树"></a>第五种表达方式：判定表和判定树</h3><p>略，见<strong>软件开发方法学：结构化分析方法</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2026,7 +2116,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
