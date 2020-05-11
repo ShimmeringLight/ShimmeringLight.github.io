@@ -158,6 +158,244 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/11/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%84%E7%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="闪烁微光">
+      <meta itemprop="description" content="向着高远支撑起生命和灵魂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闪烁微光的部落阁">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/11/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%84%E7%BA%A6/" class="post-title-link" itemprop="url">结构化设计：软件设计规约</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-11 09:42:28 / 修改时间：09:43:08" itemprop="dateCreated datePublished" datetime="2020-05-11T09:42:28+08:00">2020-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="结构化设计：软件设计规约"><a href="#结构化设计：软件设计规约" class="headerlink" title="结构化设计：软件设计规约"></a>结构化设计：软件设计规约</h1><p><strong>（软件设计说明书）</strong></p>
+<p><strong>什么是软件设计规约</strong>：软件设计规约是对软件的组织或其组成部分的内部结构的描述，满足系统需求规约所指定的全部功能及性能需求</p>
+<p><strong>软件设计规约的组成</strong>：软件设计规约通常有概要设计规约和详细设计规约，分别为相应设计过程的输出文档</p>
+<h2 id="设计规约"><a href="#设计规约" class="headerlink" title="设计规约"></a>设计规约</h2><p>​    设计规约指明软件的组织结构，其主要内容包括：</p>
+<ol>
+<li>系统环境</li>
+</ol>
+<ul>
+<li>硬件、软件姐阔与人机界面</li>
+<li>外部定义的数据库</li>
+<li>与设计有关的限定条件</li>
+</ul>
+<ol start="2">
+<li>设计描述</li>
+</ol>
+<ul>
+<li>数据流和主要数据结构</li>
+<li>软件模块的结构</li>
+<li>模块之间的接口</li>
+</ul>
+<ol start="3">
+<li>对每个模块的描述</li>
+</ol>
+<ul>
+<li>处理过程外部行为</li>
+<li>界面定义</li>
+<li>数据结构</li>
+<li>必要的注释</li>
+</ul>
+<ol start="4">
+<li>文件结构和全局数据</li>
+</ol>
+<ul>
+<li>文件的逻辑结构、记录描述以及访问方式</li>
+<li>交叉引用信息</li>
+</ul>
+<p>此外，还应包括有关软件测试方面的要求和说明。（集成测试）</p>
+<p>软件概要设计时面向软件开发者的文档，主要作为软件项目管理人员、系统分析人员与设计人员之间交流的媒介。</p>
+<h2 id="详细设计规约"><a href="#详细设计规约" class="headerlink" title="详细设计规约"></a>详细设计规约</h2><p>​    详细设计规约时对软件各组成部分内部属性的描述，它是概要设计的细化。即要在概要设计规约的基础上，增加以下内容：</p>
+<ul>
+<li><p>各处理过程的算法</p>
+</li>
+<li><p>算法所涉及的全部数据结构的描述，特别的，对主要数据结构往往包括与算法实现有关的描述</p>
+<p>​    详细设计规约主要作为软件设计人员与程序员之间交流的媒介，是单元测试的输入。</p>
+</li>
+</ul>
+<h2 id="设计规约的格式"><a href="#设计规约的格式" class="headerlink" title="设计规约的格式"></a>设计规约的格式</h2><ol>
+<li><p>引言</p>
+<p>1.1 编写目的</p>
+<p>​    说明本软件设计说明书的目的</p>
+<p>1.2 背景说明</p>
+<ul>
+<li>给出待开发的软件产品的名称</li>
+<li>说明本项目的提出者、开发者及用户</li>
+<li>说明该软件产品将做什么，如有必要，说明不做什么</li>
+</ul>
+<p>1.3 术语定义</p>
+<p>​    列出本文档中所用的专门术语的定义和外文首字母组词的原词组。</p>
+<p>1.4 参考资料</p>
+<p>​    列出本文档中所用的全部资料，包括标题、文档编号、版本号、出版日期及出版单位等，必要时注明资料来源。</p>
+</li>
+<li><p>总体设计</p>
+<p>2.1 需求规定</p>
+<p>​    说明本软件的主要输入、输出、处理的功能及性能要求</p>
+<p>2.2 运行环境</p>
+<p>​    简要说明本软件运行的软件、硬件环境和支持环境的要求</p>
+<p>2.3 处理流程</p>
+<p>​    说明本软件的处理流程，尽量使用图、文、表的形式</p>
+<p>2.4 软件结构</p>
+<p>​    在DFD图的基础上，用模块结构图来说明各层模块的划分及其相互关系，划分原则上应细到程序级（即程序单元），每个单元必须执行单独一个功能（即单元不能再分）</p>
+</li>
+<li><p>运行设计</p>
+<p>3.1 运行模块的组合</p>
+<p>​    说明对系统施加不同的外界运行控制时所引起的各种不同的运行模块的组合，说明每种运行所经历的内部模块和支持软件</p>
+<p>3.2 运行控制</p>
+<p>​    说明各运行控制方式、方法和具体的操作步骤</p>
+</li>
+<li><p>系统出错处理</p>
+<p>4.1 出错信息简要说明：每种可能的出错或故障情况出现时，系统输出信息的格式和含义</p>
+<p>4.2 出错处理方法及补救措施</p>
+<p>​    说明故障出现后课采取的措施，包括：</p>
+<ul>
+<li>后备技术。当原始系统数据玩意丢失时启用的副本的建立和启动的技术，如周期性的信息转储</li>
+<li>性能降级、使用另一个效率稍低的系统或方法，以求得到所需结果的某些部分</li>
+<li>恢复和再启动。用建立恢复点等技术，使软件再次开始运行</li>
+</ul>
+</li>
+<li><p>模块设计说明</p>
+<p>以填写模块说明表的形式，对每个模块给出下述内容</p>
+<ul>
+<li>模块的一般说明，包括名称、编号、设计者、所在文件、所在库、调用本模块的模块名和本模块调用的其他模块名</li>
+<li>功能概述</li>
+<li>处理描述，使用伪码描述本模块的算法、计算公式及步骤</li>
+<li>引用格式</li>
+<li>返回值</li>
+<li>内部接口，说明本软件内部各模块间的接口关系，包括：<ul>
+<li>名称</li>
+<li>意义</li>
+<li>数据类型</li>
+<li>有效范围</li>
+<li>I/O标志</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="软件设计评审"><a href="#软件设计评审" class="headerlink" title="软件设计评审"></a>软件设计评审</h2><h3 id="设计评审"><a href="#设计评审" class="headerlink" title="设计评审"></a>设计评审</h3><p>​    设计评审，就是对设计文档的评审。对于软件设计来说，评审与其技术设计方法本身一样重要。评审对于研制项目的成功而言是绝对必要的。对设计进行评审是为了尽早发现软件的欠缺，尽可能把这些欠缺在下一阶段工作之前予以纠正，从而避免后期付出更多的代价</p>
+<h3 id="设计评审方法"><a href="#设计评审方法" class="headerlink" title="设计评审方法"></a>设计评审方法</h3><ul>
+<li>非正式评审</li>
+<li>正式技术评审</li>
+</ul>
+<h3 id="软件设计评审的指南"><a href="#软件设计评审的指南" class="headerlink" title="软件设计评审的指南"></a>软件设计评审的指南</h3><ul>
+<li>概要设计评审和详细设计评审应该分开进行，不允许合并为一次复审<ul>
+<li>概要设计评审评价从需求到设计数据和体系结构的变换</li>
+<li>详细设计评审注重算法过程的正确性</li>
+</ul>
+</li>
+<li>建立一个议事日程并遵循它</li>
+<li>评审设计文档，不评审设计者</li>
+<li>评审中提出的问题应详细记录，但不要谋求当场解决</li>
+<li>限制参与人数并坚持充分准备<ul>
+<li>除软件开发人员外，概要设计评审必须要有用户代表参加，必要时还可邀请有关领域的专家到会</li>
+<li>详细设计评审一般不邀请用户和其他领域的代表</li>
+</ul>
+</li>
+<li>为设计文档开发一个检查表，以帮助评审人员集中在重要问题上</li>
+<li>为了提高评审的效率，所有评审的参加者应该接受一定的正规的培训</li>
+<li>评审结束前，应做出本次评审能否通过的结论</li>
+</ul>
+<h3 id="评审检查表"><a href="#评审检查表" class="headerlink" title="评审检查表"></a>评审检查表</h3><p>​    概要设计评审检查表如下：</p>
+<ul>
+<li>软件体系结构是否反映了软件需求？</li>
+<li>达到高的模块化吗？模块功能独立吗？</li>
+<li>模块与外部系统元素接口定义了吗？</li>
+<li>数据结构与软件需求一致吗？</li>
+<li>考虑了可维护性吗？</li>
+<li>是否直接评价了质量因素？</li>
+</ul>
+<p>详细设计评审检查表如下：</p>
+<ul>
+<li>算法能够完成所要求的功能吗？</li>
+<li>算法逻辑正确吗？</li>
+<li>接口与体系结构设计一直吗？</li>
+<li>逻辑的复杂性合理吗？</li>
+<li>是否规定了错误处理和反故障处理？</li>
+<li>正确定义了局部数据结构吗？</li>
+<li>都是用了结构化编程构造吗？</li>
+<li>设计的细节适用于实现语言吗？</li>
+<li>用的是那个操作系统或语言独立性质？</li>
+<li>考虑到可维护性吗？</li>
+</ul>
+<h2 id="结构化方法总结"><a href="#结构化方法总结" class="headerlink" title="结构化方法总结"></a>结构化方法总结</h2><h3 id="结构化方法的世界观"><a href="#结构化方法的世界观" class="headerlink" title="结构化方法的世界观"></a>结构化方法的世界观</h3><p>​    结构化方法看待世界的基本观点：一切系统都是由信息流构成的（其中包含一些必要的数据变换）每一个信息流都有自己的起点—数据源，有自己的归宿—数据潭，有驱动信息流动的加工，因此所谓信息处理主要表现为信息的流动。</p>
+<h3 id="基于的基本原理-原则"><a href="#基于的基本原理-原则" class="headerlink" title="基于的基本原理/原则"></a>基于的基本原理/原则</h3><ul>
+<li>自顶向下功能分解</li>
+<li>数据抽象</li>
+<li>功能/过程抽象</li>
+<li>模块化</li>
+</ul>
+<p>……</p>
+<p><strong>结构化方法是一种系统化的软件系统建模方法，从测试的角度看，结构化方法是一种特定的建立验证和确认所需标尺的方法学，包括结构化分析和结构化设计</strong></p>
+<p>结构化方法的抽象层，包括：</p>
+<ul>
+<li>需求分析层</li>
+<li>设计层</li>
+<li>实现层</li>
+</ul>
+<h3 id="该方法的组成"><a href="#该方法的组成" class="headerlink" title="该方法的组成"></a>该方法的组成</h3><p>​    紧紧围绕“自顶向下”、“过程抽象”、“数据抽象”、“模块化”等基本原理/原则，给出了完备的符号、可操作的过程、易于理解的表示工具。并提供了控制信息组织复杂性的机制，如逐层分解、数据打包等，以支持将该问题空间的一个问题映射为解空间的一个解。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>捕获的“过程”和“数据”恰恰是客观事物的易变性质</li>
+<li>解的结构没有保持原系统的结构，从而造成维护、验证上的困难。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2116,7 +2354,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
