@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="敏捷软件开发敏捷联盟宣言个体和交互胜过过程和工具  人是获得成功最重要的因素 一个优秀的团队成员能很好的与他人合作，即合作、沟通及交互能力比单纯的编程能力更重要 合适的工具对成功很重要，但不要过分夸大工具的作用 团队的构建比环境的构建重要得多  可以工作的软件胜过面面俱到的文档  没有文档的软件是一种灾难，但过多的文档比过少的文档更糟糕 对团队而言，需要编写并维护一份系统原理和结构方面的文档  客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="敏捷软件开发">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="闪烁微光的部落阁">
+<meta property="og:description" content="敏捷软件开发敏捷联盟宣言个体和交互胜过过程和工具  人是获得成功最重要的因素 一个优秀的团队成员能很好的与他人合作，即合作、沟通及交互能力比单纯的编程能力更重要 合适的工具对成功很重要，但不要过分夸大工具的作用 团队的构建比环境的构建重要得多  可以工作的软件胜过面面俱到的文档  没有文档的软件是一种灾难，但过多的文档比过少的文档更糟糕 对团队而言，需要编写并维护一份系统原理和结构方面的文档  客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-13T09:10:45.000Z">
+<meta property="article:modified_time" content="2020-05-13T09:11:30.713Z">
+<meta property="article:author" content="闪烁微光">
+<meta property="article:tag" content="软件工程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/13/%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>敏捷软件开发 | 闪烁微光的部落阁</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">闪烁微光的部落阁</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="闪烁微光">
+      <meta itemprop="description" content="向着高远支撑起生命和灵魂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闪烁微光的部落阁">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          敏捷软件开发
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-13 17:10:45 / 修改时间：17:11:30" itemprop="dateCreated datePublished" datetime="2020-05-13T17:10:45+08:00">2020-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="敏捷软件开发"><a href="#敏捷软件开发" class="headerlink" title="敏捷软件开发"></a>敏捷软件开发</h1><h2 id="敏捷联盟宣言"><a href="#敏捷联盟宣言" class="headerlink" title="敏捷联盟宣言"></a>敏捷联盟宣言</h2><p><strong>个体和交互胜过过程和工具</strong></p>
+<ul>
+<li>人是获得成功最重要的因素</li>
+<li>一个优秀的团队成员能很好的与他人合作，即合作、沟通及交互能力比单纯的编程能力更重要</li>
+<li>合适的工具对成功很重要，但不要过分夸大工具的作用</li>
+<li>团队的构建比环境的构建重要得多</li>
+</ul>
+<p><strong>可以工作的软件胜过面面俱到的文档</strong></p>
+<ul>
+<li>没有文档的软件是一种灾难，但过多的文档比过少的文档更糟糕</li>
+<li>对团队而言，需要编写并维护一份系统原理和结构方面的文档</li>
+</ul>
+<p><strong>客户合作胜过合同谈判</strong></p>
+<ul>
+<li>成功的项目需要有序、频繁的客户反馈。不是依赖于合同或者关于工作的陈述，而是让软件的客户和开发团队密切的在一起工作，并尽量经常提供反馈</li>
+<li>那些为开发团队和客户的协同工作方式提供指导的合同才是最好的合同</li>
+</ul>
+<p><strong>响应变化胜过遵循计划</strong></p>
+<ul>
+<li>响应变化的能力常决定一个软件项目的成败</li>
+<li>计划不能考虑过远</li>
+<li>较好的做计划的策略是：为下两周做详细的计划，为下三个月做粗略的计划，再以后就做极为粗略的计划</li>
+</ul>
+<h2 id="敏捷原则"><a href="#敏捷原则" class="headerlink" title="敏捷原则"></a>敏捷原则</h2><ol>
+<li>最优先要做的是：通过尽早地、持续地交付有价值的软件来使客户满意 —— 获取有质量软件的理念</li>
+<li>即使到了开发后期，也欢迎改变需求敏捷过程利用变化来为客户创造竞争优势 —— 关于态度的声明</li>
+<li>经常交付可工作的软件，其时间间隔可以是几周到几个月。交付的时间越短越好 —— 项目规划的理念，涉及如何处理文档和软件项目开发的关系</li>
+<li>在整个项目开发期间，业务人员和开发人员必须天天在一起工作 —— 团队组成和精神问题</li>
+<li>不断激励开发人员，开展项目的有关工作。给他们提供所需要的环境和支持，并信任他们能够完成所承担的工作 —— “领导”的含义，涉及管理功能</li>
+<li>在团队内部，最有效果的、最优效率的传递信息的方法，就是面对面的交谈。 —— 获取开发信息（需求、技术信息和项目信息等）的途径</li>
+<li>首要的进度度量标准是工作的软件 —— 进度度量的理念</li>
+<li>敏捷过程提倡可持续的开发速度。责任人、开发者和用户应该能够保持一个长期的、恒定的开发速度 —— 项目“持续发展”的能力</li>
+<li>不断关注优秀的技能和设计，增强敏捷能力 —— 提高敏捷能力的一种途径</li>
+<li>简单是根本的 —— 使未完成工作最小化的艺术</li>
+<li>最好的体系结构、需求和设计，出自自己组织的团队 —— 团队观念，一种软件项目管理的理念</li>
+<li>每隔一段时间，团队对如何才能有效的工作进行反省，然后对自己的行为进行适当的调整 —— 自我调整和适应</li>
+</ol>
+<p><strong>注：以上12条使敏捷开发的实践原则。实践的语意比过程更宽泛、包括活动以及与活动相关的人和基础设施。</strong></p>
+<h2 id="极限编程"><a href="#极限编程" class="headerlink" title="极限编程"></a>极限编程</h2><p>​    极限编程（eXtreme Programming）是敏捷方法中最显著的一个，它由一系列简单却相互依赖的实践组成。</p>
+<h3 id="极限编程包含的实践"><a href="#极限编程包含的实践" class="headerlink" title="极限编程包含的实践"></a>极限编程包含的实践</h3><h4 id="客户作为团队的成员"><a href="#客户作为团队的成员" class="headerlink" title="客户作为团队的成员"></a>客户作为团队的成员</h4><p>​    含义：客户与开发人员一起紧密的工作，相互了解所面临的问题，并共同解决之。其中，客户（人或团队）的主要责任使定义产品特征，并对这些特征进行优先排序</p>
+<p>​    注意：如出现不能一起紧密工作的情况，应该寻找可以代表真正客户的，并可以一起工作的人</p>
+<h4 id="“用户素材”-User-Stories"><a href="#“用户素材”-User-Stories" class="headerlink" title="“用户素材” (User Stories)"></a>“用户素材” (User Stories)</h4><p>​    含义：为了了解与项目需求有关的内容，采用“用户素材”——一种规划工具，作为在进行关于需求谈话时所使用的助记工具。通常，在客户的索引卡上记录认可的一些词语，与之同时，在该卡上写下关于需求的估算。</p>
+<h4 id="短的交付周期"><a href="#短的交付周期" class="headerlink" title="短的交付周期"></a>短的交付周期</h4><p>​    含义：短的交付周期是指每隔两周，就交付一次可工作的软件。这意味着每两周的迭代都实现了“涉众”的一些需求；并在每次迭代结束时，可给“涉众”演示由迭代所生成的系统，以得到他们的反馈</p>
+<p>​    显然，这一实践涉及迭代计划和交付计划的制定。</p>
+<h4 id="验收测试"><a href="#验收测试" class="headerlink" title="验收测试"></a>验收测试</h4><ul>
+<li>作用：通过验收测试，捕获用户素材的有关细节</li>
+<li>编写时间：在要实现该用户素材之前或实现改用户素材期间进行编写</li>
+<li>编写工具：编写验收测试，使用能够让它们自动、反复运行的某种脚本语言</li>
+</ul>
+<h4 id="结对编程"><a href="#结对编程" class="headerlink" title="结对编程"></a>结对编程</h4><p>​    含义：共同设计、共同编写、功劳均等，以促进知识在全队的传播</p>
+<p><strong>注：研究表明结对不但不会降低团队的开发效率，而且还会减少缺陷率</strong></p>
+<h4 id="测试驱动的开发"><a href="#测试驱动的开发" class="headerlink" title="测试驱动的开发"></a>测试驱动的开发</h4><p>​    含义：首先对产品的某一功能编写一个单元测试，由于该功能还不存在，因此它一定会运行失败。然后编写这一功能的代码，使该测试得以通过</p>
+<p>​    益处：为了测试用例通过而编写代码，这样的代码称为可测试的代码。优点是：由于要独立对它进行测试，因此可激励解除模块间的耦合，使模块之间具有低的耦合</p>
+<h4 id="集体所有权"><a href="#集体所有权" class="headerlink" title="集体所有权"></a>集体所有权</h4><p>​    含义：</p>
+<ul>
+<li>编程中的每一结对，都具有“检出”(check out)任何模块的权利</li>
+<li>没有程序员对一个特定的模块或技术单独负责</li>
+<li>每一个人都参与GUI工作，每个人都参与中间件方面的工作，每个人都参与数据库方面的工作，没有人对结对所编写的模块和技术有更多的权威。</li>
+</ul>
+<p><strong>注意：</strong>这并不意味着开发人员没有自己的专业知识</p>
+<h4 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h4><p>​    含义：程序员每天可以多次检入(check in)他们的模块进行集成，最重要的是，要确保所有的测试都能通过</p>
+<ul>
+<li><p>可以把新的代码集成到代码库中，可以对代码进行合并</p>
+</li>
+<li><p>必要时，可以和检入的程序员进行协商，一旦集成了他们的更改，就构造了新的系统，从而要运行系统中的每一个测试，包括当前所有运行的验收测试，所有的测试都通过，才算完成这一次的检入工作</p>
+<h4 id="可持续的开发速度"><a href="#可持续的开发速度" class="headerlink" title="可持续的开发速度"></a>可持续的开发速度</h4></li>
+</ul>
+<p>​    含义：团队必须有意识地保持稳定、适中的速度</p>
+<h4 id="开放的工作空间"><a href="#开放的工作空间" class="headerlink" title="开放的工作空间"></a>开放的工作空间</h4><p>​    含义：团队在一个充满工作气氛（例如：墙壁上挂满状态图表、UML图、任务明细表等）的房间中一起工作，结对的每一个人都可了解对方的工作状态，可得知另一个何时遇到了麻烦，并可适宜的进行交流和讨论</p>
+<h4 id="规划游戏"><a href="#规划游戏" class="headerlink" title="规划游戏"></a>规划游戏</h4><p>含义：业务人员（客户）决定特征以及特征的重要性，开发人员决定实现一个特征所花费的代价</p>
+<p>即：在每一次发布和迭代开始时，开发人员基于最近一次所完成迭代或最近一次发布所使用的工作量，为客户提供一个预算；客户选择那些所需的、成本合起来不超过该预算的用户素材</p>
+<p>可见，其本质是业务人员和开发人员之间的职责划分</p>
+<p>益处：采用短周期的迭代和发布，客户和开发人员很快就会适应项目开发节奏，客户会了解开发人员的速度，并基于这一了解，就能确定项目的持续时间以及所花费的成本。</p>
+<h4 id="简单的设计"><a href="#简单的设计" class="headerlink" title="简单的设计"></a>简单的设计</h4><p>​    仅关注计划中本次迭代所要完成的用户素材，并在一次次迭代中，不断变迁系统设计，使之对正在实现的用户素材适中保持最佳状态，使团队所进行的设计尽可能的简单，具有表现力。</p>
+<p>其中，三条指导原则是：</p>
+<ol>
+<li><p>尽可能寻找最简单的方法，实现当前的用户素材</p>
+</li>
+<li><p>延迟基础设施的需求决策</p>
+<p>有关基础设施（数据库，ORB等）的引入，团队应对此进行认真的考虑，只有在有证据，或至少有十分明显迹象表明引入这些基础设施比继续等待更加合算时，才能引入</p>
+</li>
+<li><p>一次代码，并且只有一次</p>
+<p>不允许出现重复的代码。一旦出现，必须消除之，以减少代码之间的耦合。其中，消除重复代码的最好办法是抽象</p>
+</li>
+</ol>
+<h4 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h4><p><strong>重构的含义</strong></p>
+<p>​    重构就是在不改变代码行为的前提下，对其进行的一系列改造，旨在改进系统结构的实践活动。通过重构，可逐步改进系统设计和体系结构</p>
+<p><strong>重构方式</strong></p>
+<ul>
+<li>在进行每次改造时，要进行单元测试，确保这次改进没有造成任何破坏，保持系统可以工作</li>
+<li>重构要不断进行，每隔一个小时或更短的时间。这样可以不断地保持尽可能干净、简单且有表现力的代码</li>
+</ul>
+<h4 id="隐喻"><a href="#隐喻" class="headerlink" title="隐喻"></a>隐喻</h4><p>​    隐喻是XP中形成系统一个全局视图的重要实践，隐喻是每个人可以讲述的系统如何工作的故事</p>
+<p>​    通过隐喻，可以将整个系统连接在一起，使所有单独模块的位置和外观变得明显、直观。如果模块的外观与整个系统的隐喻不符，则就知道该模块是错误的</p>
+<h3 id="应用极限编程实践中应注意的两个问题"><a href="#应用极限编程实践中应注意的两个问题" class="headerlink" title="应用极限编程实践中应注意的两个问题"></a>应用极限编程实践中应注意的两个问题</h3><ul>
+<li>应将这组简单的实践融为一体，相互依赖</li>
+<li>可增加一些实践或对其中的一些实践进行修改</li>
+</ul>
+<h3 id="极限编程过程"><a href="#极限编程过程" class="headerlink" title="极限编程过程"></a>极限编程过程</h3><p>XP使用面向对象方法作为推荐的开发范型，它包含了策划、设计、编码和测试4个框架活动的规则和实践</p>
+<h4 id="策划"><a href="#策划" class="headerlink" title="策划"></a>策划</h4><p>​    <strong>策划活动开始于倾听，是一个需求获取活动</strong>，该活动要使XP团队技术成员理解软件的商业背景以及充分感受需要的输出和主要特征及主要功能：</p>
+<ul>
+<li><p><strong>产生一系列的用户故事，用于描述即将建立的软件所需要的输出、特征和功能。</strong>每个故事由客户书写并置于一张索引卡上，客户根据对应特征或功能的综合业务价值标明故事的权值（即优先级）</p>
+</li>
+<li><p><strong>XP团队成员评估每一个故事并给出以开发周期为度量单位的成本。</strong>如果某个故事的成本超过了3个开发周期，则将请客户把该故事进一步细化，并重新赋值并计算成本</p>
+</li>
+<li><p><strong>客户和XP团队共同决定把故事分组并置于XP团队将要开发的下一个发行版本中（下一个软件增量）</strong></p>
+</li>
+<li><p>一旦认可对下一个发布版本的基本承诺（包括故事、交付日期及其他项目事项），<strong>XP团队将以下述三种方式之一对开发的故事进行排序：</strong></p>
+<ul>
+<li>所有选定故事将在几周内尽快实现</li>
+<li>具有高优先级的故事将移到进度表的前面并首先实现</li>
+<li>高风险故事将首先实现</li>
+</ul>
+<p>在开发过程中，客户可以增加故事，改变故事的权值，分解或者去掉故事。然后，XP团队要重新考虑所剩余的发行版本并响应修改计划</p>
+</li>
+</ul>
+<h4 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h4><p><strong>XP设计严格遵守简洁原则</strong></p>
+<ul>
+<li>XP设计鼓励使用CRC（类-责任-协作者）卡确定和组织当前软件增量相关的面向对象的类。<strong>CRC卡也是XP过程中唯一的设计工作产品</strong></li>
+<li><strong>如果某个故事设计遇到困难，XP推荐立即建立这部分设计的可执行的原型，实现并评估设计原型</strong>，其目的是在真正的实现开始时降低风险，对可能存在的设计问题的故事确认其最初的设计。</li>
+</ul>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><ul>
+<li>XP推荐在故事策划和初步设计完成之后，团队不是直接编码，而是开发一系列用于检测本次（软件增量）发布的所有故事的单元测试</li>
+<li>建立单元测试，开发者将集中精力编码，开发必须实现的内容以通过测试</li>
+<li>编码中强调结对编程</li>
+<li>完成结对编程的任务后，将所开发的工作与其他人的工作集成起来</li>
+</ul>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><ul>
+<li>在编码之前建立单元测试是XP方法的关键。<strong>所建立的单元测试应当使用一个可以自动实施的框架，以便回归测试。</strong></li>
+<li>一旦将个人的单元测试组织到一个“通用测试集”，每天都可以进行系统的集成和确认测试</li>
+<li><strong>XP验收测试，也被称为客户测试，由可会规定技术条件，并着眼于客户可见的、可评审的系统级的特征和功能</strong>。验收测试根据本次软件发布中所实现的用户故事而确定</li>
+</ul>
+<h2 id="敏捷设计"><a href="#敏捷设计" class="headerlink" title="敏捷设计"></a>敏捷设计</h2><h3 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h3><p>​    为了应对需求变化，设计应尽量避免以下问题：</p>
+<ul>
+<li><p>僵化性：<strong>是指难以对软件设计进行改动</strong></p>
+</li>
+<li><p>脆弱性：<strong>是指在进行一个改动时，程序的许多地方就可能出现问题</strong></p>
+</li>
+<li><p>粘固性：是指在一部分设计中包含了对其他部分有用的成分，但要把这些成分分离出来就要付出很大的努力并具有相当大的风险。<strong>即设计难以复用</strong>。</p>
+</li>
+<li><p>粘滞性：存在两种表现形式</p>
+<ul>
+<li>软件粘滞性：是指当面临一个改动时，若想保持系统一致的设计方法是一件很困难的事情，很容易采用一些破坏设计的方法，即难于做正确的事情</li>
+<li>环境粘滞性：是指环境的迟钝和低效。例如编译时间长。— 也是难于做正确的事情</li>
+</ul>
+</li>
+<li><p>不必要的复杂性：<strong>是指设计中包含了当前没有用的成分</strong>，一方面可使软件变得复杂，另一方面可使软件难于理解，即过分设计</p>
+</li>
+<li><p>不必要的复制：<strong>是指滥用“剪切”和“粘贴”等鼠标操作</strong>。</p>
+<ul>
+<li>往往使开发人员忽略了抽象，从而使系统不易理解</li>
+<li>软件中的重复代码，使系统的改动变得更加困难，不易于系统的维护</li>
+</ul>
+</li>
+<li><p>晦涩性：<strong>是指模块难于理解</strong>。</p>
+</li>
+</ul>
+<h3 id="防止软件腐化的基本途径"><a href="#防止软件腐化的基本途径" class="headerlink" title="防止软件腐化的基本途径"></a>防止软件腐化的基本途径</h3><p>​    简言之，以变应变，尽力避免出现以上设计问题</p>
+<p>​    进一步说：</p>
+<ul>
+<li>团队几乎不进行预先设计，因此不需要一个成熟的初始设计</li>
+<li>团队通过多次使用单元测试和验收测试，支持系统的设计尽可能的简单、干净，使设计保持灵活性和易于理解性</li>
+<li>灵活、持续地改进设计，以便使每次迭代结束时所生成的系统具有满足那次迭代需求的设计</li>
+</ul>
+<h3 id="采用敏捷设计的方法"><a href="#采用敏捷设计的方法" class="headerlink" title="采用敏捷设计的方法"></a>采用敏捷设计的方法</h3><ul>
+<li><p>使用一些设计原则，以保持软件是灵活的、可维护的</p>
+</li>
+<li><p>掌握一些设计模式，以便针对特定问题权衡这些原则</p>
+<p>​    敏捷设计使一个应用原则、模式和实践的过程，其间不断改善软件结构，保持系统设计在任何时间都尽可能的简单、干净（<strong>主要使指边界清楚、结构良好</strong>）和富有表现力，即：</p>
+</li>
+<li><p><strong>它的功能</strong> 对于用户来说，通过直观、简单的界面呈现出恰当特征的程序</p>
+</li>
+<li><p><strong>它的内部结构</strong> 对于软件设计者来说，通过简单、直观的划分，使其具有最小耦合的内部结构</p>
+</li>
+<li><p><strong>创造过程</strong> 对于开发人员来说，每周都会取得一些重大进展，并生产出无缺陷代码的具有创造力的团队过程</p>
+</li>
+</ul>
+<h3 id="一种敏捷过程模型——Scrum"><a href="#一种敏捷过程模型——Scrum" class="headerlink" title="一种敏捷过程模型——Scrum"></a>一种敏捷过程模型——Scrum</h3><p>Scrum有三个阶段：</p>
+<ul>
+<li>规划纲要阶段：建立大致的项目目标和设计软件体系结构</li>
+<li>一系列的冲刺循环，每个循环开发出一个系统增量</li>
+<li>项目结束阶段总结项目，完善需要的文档，如系统帮助和用户手册，并总结从项目中获得的经验</li>
+</ul>
+<p><strong>Scrum过程流</strong></p>
+<ul>
+<li>待定项：一个为用户提供商业价值的项目需求或特征的优先级列表</li>
+<li>冲刺：由一些工作单元组成，是达到待定项中定义的需求所必须的</li>
+<li>演示：向客户交付软件增量</li>
+</ul>
+<h2 id="可拓展的敏捷方法"><a href="#可拓展的敏捷方法" class="headerlink" title="可拓展的敏捷方法"></a>可拓展的敏捷方法</h2><p>​    敏捷方法的开发是为同在一个房间办公与交流的小型团队使用的，但也可以将敏捷实践用到大型系统开发中</p>
+<h3 id="大型和小型系统开发的区别"><a href="#大型和小型系统开发的区别" class="headerlink" title="大型和小型系统开发的区别"></a>大型和小型系统开发的区别</h3><ul>
+<li>大型系统经常由独立的、交互的子系统组成，不同的团队独立开发不同的子系统</li>
+<li>大型系统包含了一系列已经存在的系统与它们进行交互，而不适应于灵活性和增量式开发</li>
+<li>当一个系统由多个系统集成时，开发工作中一个重要部分是系统配置而不是源代码的开发。这不一定与增量式开发和频繁的系统集成兼容</li>
+<li>大型系统和它们的开发流程通常受限于外部规则和规章限制，如要求编写各种系统文档等</li>
+<li>大型系统有很长的采购和开发时间，很难保持团队在整个周期中对系统连续的认识</li>
+<li>大型系统通常具有不同的信息持有者，将不同的信息持有者加入到开发流程中很重要</li>
+</ul>
+<p><strong>伸缩的敏捷方法</strong></p>
+<ul>
+<li>照搬放大的观点，关注如何将敏捷开发方法应用到那些小型团队无法开发的大型项目中</li>
+<li>渗透的观点，关注如何将敏捷方法介绍到拥有多年开发经验的大机构中</li>
+</ul>
+<h3 id="敏捷开发应用到大型系统时必须做的调整"><a href="#敏捷开发应用到大型系统时必须做的调整" class="headerlink" title="敏捷开发应用到大型系统时必须做的调整"></a>敏捷开发应用到大型系统时必须做的调整</h3><ul>
+<li>大型系统不可能只关注代码，必须做更多的预先设计（如软件体系结构）和系统文档</li>
+<li>必须建立和使用跨团队沟通机制</li>
+<li>当系统由很多个程序模块组成时，持续集成时不可行的，但需要保持频繁的系统构建和定期地发布系统。需要引入支持多团队软件开发的新的配置管理工具</li>
+</ul>
+<h2 id="敏捷开发要点总结"><a href="#敏捷开发要点总结" class="headerlink" title="敏捷开发要点总结"></a>敏捷开发要点总结</h2><ol>
+<li>敏捷开发时一种专注快速开发的增量式开发，频繁地发布软件、降低过程开销、生产高质量代码。用户支持参与到开发过程中</li>
+<li>决定是否使用敏捷或计划驱动的方法取决于所开发系统的类型、开发团队的能力和开发系统的公司的文化</li>
+<li>极限编程是一种著名的敏捷方法，它集成了一系列的好的编程经验，如频繁地发布软件、连续地改善软件和让客户参与到软件开发团队中</li>
+<li>极限编程地一个特别长处是在创建程序特征之前开发自动测试，在增量集成进系统地时候所有测试必须成功执行</li>
+<li>Scrum是一种敏捷软件过程模型，它的核心时一组冲刺循环，开发一个系统增量由固定的时间周期。规划是基于积压的工作地优先权安排的，选择高优先权地任务开始冲刺循环</li>
+<li>伸缩的敏捷方法对于大型系统是困难的。大型系统需要前期设计和一些文档。在实践中，当一个项目有几个独立的开发团队时，连续的集成是不可能的</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>技术不精，如有纰漏恳请指出！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpeg" alt="闪烁微光 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag"># 软件工程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/11/%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%84%E7%BA%A6/" rel="prev" title="结构化设计：软件设计规约">
+      <i class="fa fa-chevron-left"></i> 结构化设计：软件设计规约
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#敏捷软件开发"><span class="nav-number">1.</span> <span class="nav-text">敏捷软件开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷联盟宣言"><span class="nav-number">1.1.</span> <span class="nav-text">敏捷联盟宣言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷原则"><span class="nav-number">1.2.</span> <span class="nav-text">敏捷原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极限编程"><span class="nav-number">1.3.</span> <span class="nav-text">极限编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#极限编程包含的实践"><span class="nav-number">1.3.1.</span> <span class="nav-text">极限编程包含的实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户作为团队的成员"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">客户作为团队的成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“用户素材”-User-Stories"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">“用户素材” (User Stories)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#短的交付周期"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">短的交付周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验收测试"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">验收测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结对编程"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">结对编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试驱动的开发"><span class="nav-number">1.3.1.6.</span> <span class="nav-text">测试驱动的开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集体所有权"><span class="nav-number">1.3.1.7.</span> <span class="nav-text">集体所有权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#持续集成"><span class="nav-number">1.3.1.8.</span> <span class="nav-text">持续集成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可持续的开发速度"><span class="nav-number">1.3.1.9.</span> <span class="nav-text">可持续的开发速度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开放的工作空间"><span class="nav-number">1.3.1.10.</span> <span class="nav-text">开放的工作空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规划游戏"><span class="nav-number">1.3.1.11.</span> <span class="nav-text">规划游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的设计"><span class="nav-number">1.3.1.12.</span> <span class="nav-text">简单的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重构"><span class="nav-number">1.3.1.13.</span> <span class="nav-text">重构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐喻"><span class="nav-number">1.3.1.14.</span> <span class="nav-text">隐喻</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用极限编程实践中应注意的两个问题"><span class="nav-number">1.3.2.</span> <span class="nav-text">应用极限编程实践中应注意的两个问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极限编程过程"><span class="nav-number">1.3.3.</span> <span class="nav-text">极限编程过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#策划"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">策划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷设计"><span class="nav-number">1.4.</span> <span class="nav-text">敏捷设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题的提出"><span class="nav-number">1.4.1.</span> <span class="nav-text">问题的提出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防止软件腐化的基本途径"><span class="nav-number">1.4.2.</span> <span class="nav-text">防止软件腐化的基本途径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采用敏捷设计的方法"><span class="nav-number">1.4.3.</span> <span class="nav-text">采用敏捷设计的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一种敏捷过程模型——Scrum"><span class="nav-number">1.4.4.</span> <span class="nav-text">一种敏捷过程模型——Scrum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可拓展的敏捷方法"><span class="nav-number">1.5.</span> <span class="nav-text">可拓展的敏捷方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大型和小型系统开发的区别"><span class="nav-number">1.5.1.</span> <span class="nav-text">大型和小型系统开发的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#敏捷开发应用到大型系统时必须做的调整"><span class="nav-number">1.5.2.</span> <span class="nav-text">敏捷开发应用到大型系统时必须做的调整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷开发要点总结"><span class="nav-number">1.6.</span> <span class="nav-text">敏捷开发要点总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">闪烁微光</p>
+  <div class="site-description" itemprop="description">向着高远支撑起生命和灵魂</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ShimmeringLight/ShimmeringLight.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ShimmeringLight&#x2F;ShimmeringLight.github.io" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">闪烁微光</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
